@@ -1,11 +1,13 @@
 import { useContext, useState, useRef, useEffect } from 'react';
 import { Box, FormControl, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import JSZip from 'jszip';
 import * as shapefile from 'shapefile';
 import MapContext from './MapContext';
 
 function FileUpload(){
+    const navigate = useNavigate();
     const inputFile = useRef(null);
     const { mapInfo } = useContext(MapContext);
 
@@ -80,24 +82,24 @@ function FileUpload(){
         const reader = new FileReader();
 
         reader.onload = () => {
-        const zipData = reader.result;
-        const jszip = new JSZip();
+            const zipData = reader.result;
+            const jszip = new JSZip();
 
-        jszip.loadAsync(zipData).then((zip) => {
-            zip.forEach((fileName, file) => {
-            // ignore file that is not .shp/.dbf
-            const fileType = fileName.split('.').pop();
-            if (fileType !== 'shp' && fileType !== 'dbf') {
-                return;
-            }
+            jszip.loadAsync(zipData).then((zip) => {
+                zip.forEach((fileName, file) => {
+                // ignore file that is not .shp/.dbf
+                const fileType = fileName.split('.').pop();
+                if (fileType !== 'shp' && fileType !== 'dbf') {
+                    return;
+                }
 
-            // Read file content by arraybuffer type
-            file.async('arraybuffer').then((content) => {
-                if (fileType === 'shp') setShpBuffer(content);
-                else setDbfBuffer(content);
+                // Read file content by arraybuffer type
+                file.async('arraybuffer').then((content) => {
+                    if (fileType === 'shp') setShpBuffer(content);
+                    else setDbfBuffer(content);
+                });
+                });
             });
-            });
-        });
         };
         reader.readAsArrayBuffer(file);
     }
@@ -105,9 +107,9 @@ function FileUpload(){
     // for clearing input file
     function clearInputFile() {
         if (inputFile.current) {
-        inputFile.current.value = '';
-        inputFile.current.type = 'file';
-        inputFile.current.accept = '.zip, .json, .shp, .kml, .dbf';
+            inputFile.current.value = '';
+            inputFile.current.type = 'file';
+            inputFile.current.accept = '.zip, .json, .shp, .kml, .dbf';
         }
     }
 
@@ -170,6 +172,7 @@ function FileUpload(){
                 const kmlText = new DOMParser().parseFromString(fileContent, 'text/xml');
                 mapInfo.setMap(kmlText);
             }
+            navigate('/map');
         }
     };
 

@@ -17,7 +17,8 @@ export function MapContextProvider({children}){
     const ActionType = {
         SET_MAP_TITLE: 'SET_MAP_TITLE',
         SET_FILE_FORMAT: 'SET_FILE_FORMAT',
-        SET_MAP: 'SET_MAP'
+        SET_MAP: 'SET_MAP',
+        RESET: 'RESET'
     }
 
     const reducer = (action) => {
@@ -39,6 +40,12 @@ export function MapContextProvider({children}){
                     ...prevMapInfo,
                     map: payload
                 }));
+            case ActionType.RESET:
+                return setMapInfo({
+                    mapTitle: '',
+                    fileFormat: '',
+                    map: null
+                });
             default:
                 return mapInfo;
         }
@@ -62,6 +69,13 @@ export function MapContextProvider({children}){
         reducer({
             type: ActionType.SET_MAP,
             payload: map
+        })
+    }
+
+    mapInfo.reset = () => {
+        reducer({
+            type: ActionType.RESET,
+            payload: null
         })
     }
 
