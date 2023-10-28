@@ -6,7 +6,9 @@ export function MapContextProvider({children}){
     const [mapInfo, setMapInfo] = useState({
         mapTitle: '',
         fileFormat: '',
-        map: null
+        map: null,
+        download: false,
+        downloadFormat: ''
     });
 
     // TO BE DELETED
@@ -18,7 +20,9 @@ export function MapContextProvider({children}){
         SET_MAP_TITLE: 'SET_MAP_TITLE',
         SET_FILE_FORMAT: 'SET_FILE_FORMAT',
         SET_MAP: 'SET_MAP',
-        RESET: 'RESET'
+        RESET: 'RESET',
+        SET_DOWNLOAD_FORMAT: 'SET_DOWNLOAD_FORMAT',
+        CANCEL_DOWNLOAD: 'CANCEL_DOWNLOAD',
     }
 
     const reducer = (action) => {
@@ -46,6 +50,18 @@ export function MapContextProvider({children}){
                     fileFormat: '',
                     map: null
                 });
+            case ActionType.SET_DOWNLOAD_FORMAT:
+                return setMapInfo((prevMapInfo) => ({
+                    ...prevMapInfo,
+                    download: true,
+                    downloadFormat: payload
+                }));
+            case ActionType.CANCEL_DOWNLOAD:
+                return setMapInfo((prevMapInfo) => ({
+                    ...prevMapInfo,
+                    download: false,
+                    downloadFormat: ''
+                }));
             default:
                 return mapInfo;
         }
@@ -76,6 +92,20 @@ export function MapContextProvider({children}){
         reducer({
             type: ActionType.RESET,
             payload: null
+        })
+    }
+
+    mapInfo.cancelDownload = () => {
+        reducer({
+            type: ActionType.CANCEL_DOWNLOAD,
+            payload: null
+        })
+    }
+
+    mapInfo.setDownloadFormat = (downloadFormat) => {
+        reducer({
+            type: ActionType.SET_DOWNLOAD_FORMAT,
+            payload: downloadFormat
         })
     }
 

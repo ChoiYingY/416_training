@@ -13,8 +13,6 @@ function FileUpload(){
 
     const [fileFormat, setFileFormat] = useState('');
     const [fileContent, setFileContent] = useState('');
-    // const [geoJSON, setGeoJSON] = useState({});
-    // const [kml, setKml] = useState(null);
     const [shpBuffer, setShpBuffer] = useState(null);
     const [dbfBuffer, setDbfBuffer] = useState(null);
 

@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { Box, FormControl, Tabs, Tab, TextField } from '@mui/material';
 
-import Dropdown from './Dropdown';
+import FileDropdown from './FileDropdown';
 import MapContext from './MapContext';
 import FileUpload from './FileUpload';
 
@@ -53,7 +53,7 @@ function UploadMap(){
                         onChange={handleTitleChange}
                         onKeyDown={handleKeyPress}
                     />
-                    <Dropdown/>
+                    <FileDropdown/>
                     <FileUpload/>
                 </Box>
             </FormControl>

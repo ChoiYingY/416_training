@@ -6,14 +6,18 @@ function KmlMap({map}){
     if(!map){
         return null;
     }
-    
+
     return (
-        <MapContainer style={{ height: '80vh' }} center={[0, 0]} zoom={2}>
+        <MapContainer
+            center={[0, 0]}
+            zoom={2}
+            id='map-viewer'
+        >
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-            <ReactLeafletKml map={map}/>
+            <ReactLeafletKml kml={map}/>
         </MapContainer>
     );
 }

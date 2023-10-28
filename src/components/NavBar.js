@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { AppBar, Toolbar, Box, Typography, Button } from '@mui/material';
+import { AppBar, Toolbar, Box, Typography } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import MapContext from './MapContext';
+import DownloadFormatDropdown from './DownloadFormatDropdown';
 
 function NavBar(){
     const navigate = useNavigate();
@@ -10,22 +11,21 @@ function NavBar(){
 
     const { mapInfo } = useContext(MapContext);
 
-    let mapContent = null;
-
-    if(mapInfo && mapInfo.mapTitle && mapInfo.map && location.pathname === '/map'){
-        mapContent = <>
-            <Typography variant='h4' style={{ color: 'black' }}>{mapInfo.mapTitle}</Typography>
-            <Button variant='outlined'>Download</Button>
-        </>;
-    }
-    else{
-        mapContent = null;
-    }
-
     function handleGoHome(event){
         event.stopPropagation();
         mapInfo.reset();
         navigate('/');
+    }
+    let mapContent = null;
+
+    if(mapInfo && mapInfo.map && location.pathname === '/map'){
+        mapContent = <>
+            <Typography variant='h4' style={{ color: 'black' }}>{(mapInfo.mapTitle) ? mapInfo.mapTitle : 'Untitled Map'}</Typography>
+            <DownloadFormatDropdown/>
+        </>;
+    }
+    else{
+        mapContent = null;
     }
 
     return(

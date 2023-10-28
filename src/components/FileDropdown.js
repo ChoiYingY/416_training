@@ -3,7 +3,7 @@ import MapContext from './MapContext';
 
 import { Box, FormControl, FormLabel, InputLabel, Select, MenuItem, Button } from '@mui/material';
 
-export default function Dropdown() {
+function FileDropdown() {
     const [fileFormat, setFileFormat] = useState('');
     const { mapInfo } = useContext(MapContext);
 
@@ -50,3 +50,5 @@ export default function Dropdown() {
         </Box>
     );
 }
+
+export default FileDropdown;
