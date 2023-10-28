@@ -44,15 +44,12 @@
 #upload-form{
   width: 92.5vw;
   height: 90%;
-  /* background-color: blue; */
   align-items: center;
-
 }
 
 #tab-section{
   width: 100%;
   height: 6.5vh;
-  /* background-color: red; */
   justify-content: flex-start;
 }
 
@@ -75,11 +72,17 @@
   width: 100%;
   height: 100%;
   background-color: var(--gray);
-  justify-content: space-around;
+  padding: 3.5% 0;
+}
+
+#title-input{
+  width: 85vw;
+  background-color: white;
 }
 
 #select-file-container{
   width: 100%;
+  margin-top: 3%;
   justify-content: space-around;
   align-self: flex-start;
 }
