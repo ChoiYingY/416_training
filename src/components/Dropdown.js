@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from 'react';
-import FileUpload from './FileUpload';
 import MapContext from './MapContext';
 
 import { Box, FormControl, FormLabel, InputLabel, Select, MenuItem, Button } from '@mui/material';
@@ -45,11 +44,9 @@ export default function Dropdown() {
                     onClick={handleClear}
                     style={{ height: 50, marginLeft: '2%' }}
                 >
-                Clear Map Format
+                    Clear Map Format
                 </Button>
             </Box>
-
-            <FileUpload fileFormat={fileFormat}/>
         </Box>
     );
 }
