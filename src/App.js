@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import UploadMap from './components/UploadMap';
 
 import { MapContextProvider } from './components/MapContext';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (

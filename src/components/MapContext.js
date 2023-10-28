@@ -6,6 +6,7 @@ export function MapContextProvider({children}){
     const [mapInfo, setMapInfo] = useState({
         mapTitle: '',
         fileFormat: '',
+        map: null
     });
 
     // TO BE DELETED
@@ -16,6 +17,7 @@ export function MapContextProvider({children}){
     const ActionType = {
         SET_MAP_TITLE: 'SET_MAP_TITLE',
         SET_FILE_FORMAT: 'SET_FILE_FORMAT',
+        SET_MAP: 'SET_MAP'
     }
 
     const reducer = (action) => {
@@ -31,6 +33,11 @@ export function MapContextProvider({children}){
                 return setMapInfo((prevMapInfo) => ({
                     ...prevMapInfo,
                     fileFormat: payload
+                }));
+            case ActionType.SET_MAP:
+                return setMapInfo((prevMapInfo) => ({
+                    ...prevMapInfo,
+                    map: payload
                 }));
             default:
                 return mapInfo;
@@ -48,6 +55,13 @@ export function MapContextProvider({children}){
         reducer({
             type: ActionType.SET_FILE_FORMAT,
             payload: fileFormat
+        })
+    }
+
+    mapInfo.setMap = (map) => {
+        reducer({
+            type: ActionType.SET_MAP,
+            payload: map
         })
     }
 
