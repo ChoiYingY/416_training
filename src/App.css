@@ -95,8 +95,47 @@
 }
 
 #file-upload-container{
+  width: 92.5vw;
   align-self: flex-start;
-  margin-left: 4%;
+}
+
+#file-upload-input{
+  width: 100%;
+}
+
+input[type=file]::file-selector-button {
+  margin-left: 4vw;
+  width: 12.5vw;
+  height: 6.5vh;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 2.5%;
+  font-size: 15px;
+}
+
+#button-container{
+  width: 19vw;
+  margin-top: 15%;
+  margin-right: 4vw;
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+#clear-button{
+  width: 8.5vw;
+  background-color: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 2.5%;
+}
+
+#upload-button{
+  width: 8.5vw;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 2.5%;
 }
 
 #map-viewer{

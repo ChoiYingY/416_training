@@ -34,18 +34,12 @@ function Map(){
     }
     
     return(
-        <>
+        <div id='map-viewer' ref={mapRef}>
             {
                 (mapInfo.fileFormat === 'Keyhole(KML)') ?
-                    <div ref={mapRef}>
-                        <KmlMap map={mapInfo.map}/>
-                    </div>
-                :
-                <div ref={mapRef}>
-                    <GeojsonMap map={mapInfo.map}/>
-                </div>
+                    <KmlMap map={mapInfo.map}/> : <GeojsonMap map={mapInfo.map}/>
             }
-        </>
+        </div>
     );
 }
 

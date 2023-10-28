@@ -15,6 +15,7 @@ function NavBar(){
         event.stopPropagation();
         mapInfo.reset();
         navigate('/');
+        window.location.reload();
     }
     let mapContent = null;
 

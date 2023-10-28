@@ -48,7 +48,9 @@ export function MapContextProvider({children}){
                 return setMapInfo({
                     mapTitle: '',
                     fileFormat: '',
-                    map: null
+                    map: null,
+                    download: false,
+                    downloadFormat: ''
                 });
             case ActionType.SET_DOWNLOAD_FORMAT:
                 return setMapInfo((prevMapInfo) => ({

@@ -184,7 +184,7 @@ function FileUpload(){
 
     return(
         <Box className='flex-row' id='file-upload-container'>
-            <FormControl>
+            <FormControl style={{ width: '100%' }}>
                 <input
                     type='file'
                     accept='.zip, .json, .shp, .kml, .dbf'
@@ -193,12 +193,24 @@ function FileUpload(){
                     onChange={handleSelectFile}
                     id='file-upload-input'
                 />
-                <Button variant='outlined' onClick={handleClear}>
-                    Clear
-                </Button>
-                <Button variant='contained' onClick={handleUpload}>
-                    Upload
-                </Button>
+                <Box className='flex-row' id='button-container'>
+                    <Button
+                        variant='outlined'
+                        id='clear-button'
+                        style={{ borderRadius: 50 }}
+                        onClick={handleClear}
+                    >
+                        Clear
+                    </Button>
+                    <Button
+                        variant='contained'
+                        id='upload-button'
+                        style={{ borderRadius: 50 }}
+                        onClick={handleUpload}
+                    >
+                        Upload
+                    </Button>
+                </Box>
             </FormControl>
             
         </Box>

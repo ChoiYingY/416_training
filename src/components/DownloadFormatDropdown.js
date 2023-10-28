@@ -4,10 +4,7 @@ import MapContext from './MapContext';
 import { Button, Menu, MenuItem } from '@mui/material';
 
 function DownloadFormatDropdown() {
-    const options = [
-        'PNG',
-        'JPG'
-    ];
+    const options = ['PNG', 'JPG'];
 
     const { mapInfo } = useContext(MapContext);
     const [anchorEl, setAnchorEl] = useState(null);
